@@ -1,3 +1,40 @@
 <resources>
-    <string name="app_name">Notes</string>
+    <string name="app_name">Navigation Drawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Мои фрагментарные заметки</string>
+    <string name="nav_header_subtitle">Домашнее задание</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Заметки</string>
+    <string name="menu_about">О программе</string>
+
+    <string name="editor_description_lines">Текст заметки</string>
+    <string name="editor_title_hint">Заголовок</string>
+    <string name="editor_description_hint">Текст заметки</string>
+    <string name="button_accept_text">Принять</string>
+    <string name="button_delete_text">Удалить</string>
+    <string name="button_cancel_text">Отменить</string>
+    <string name="button_yes_text">Да</string>
+    <string name="button_no_text">Нет</string>
+    <string name="title_attention">ВНИМАНИЕ</string>
+    <string name="alert_accept">Сохранить изменения?</string>
+    <string name="main_activity_on_close_question">Закрыть приложение?</string>
+    <string name="editor_empty_close_message">Вы не можете сохранить пустую заметку</string>
+    <string name="menu_item_settings">Настройки</string>
+    <string name="menu_item_add_note">Добавить заметку</string>
+    <string name="menu_item_find_note">Поиск заметки</string>
+    <string name="menu_item_delete">Удалить</string>
+    <string name="menu_item_edit">Изменить</string>
+    <string name="info_title">Мои фрагментарные заметки</string>
+    <string name="info_description">&#160;&#160;&#160;&#160;&#160;Программа написана в качестве домашнего задания.<br/>
+    &#160;&#160;&#160;&#160;&#160;Основные возможности программы:<br />
+    &#160;&#160;&#160;&#160;&#160;- создание заметок;<br />
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;- изменение даты;<br />
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;- изменение значка;<br />
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;- изменение заголовка заметки;<br />
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;- изменение текста заметки;<br />
+    &#160;&#160;&#160;&#160;&#160;- редактирование заметок;<br />
+    &#160;&#160;&#160;&#160;&#160;- удаление заметок</string>
 </resources>
