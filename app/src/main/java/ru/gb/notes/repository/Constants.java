@@ -10,6 +10,8 @@ public interface Constants {
 
     int ITEMS_SPACE = 10;
 
+    String PREFERENCES = "PREFERENCES";
+
     int[] images = {R.drawable.done, R.drawable.alarm, R.drawable.business, R.drawable.shopping};
 
     default int getImageById(int drawable_image) {

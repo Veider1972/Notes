@@ -1,5 +1,7 @@
 package ru.gb.notes.ui;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Menu;
@@ -9,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LifecycleObserver;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -17,7 +20,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
-import java.util.Random;
 
 import ru.gb.notes.R;
 import ru.gb.notes.databinding.ActivityMainBinding;
@@ -26,7 +28,7 @@ import ru.gb.notes.repository.Constants;
 import ru.gb.notes.repository.Note;
 import ru.gb.notes.repository.Notes;
 
-public class MainActivity extends AppCompatActivity implements HomeFragment.NotesListController, NoteEditorDialogFragment.NoteEditorController, Constants {
+public class MainActivity extends AppCompatActivity implements LifecycleObserver, HomeFragment.NotesListController, NoteEditorDialogFragment.NoteEditorController, Constants {
 
     private static Notes notes;
     private HomeFragment homeFragment;
@@ -35,6 +37,12 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Note
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
+    private static SharedPreferences sharedPreferences;
+
+    public static SharedPreferences getSharedPreferences() {
+        return sharedPreferences;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,15 +50,13 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Note
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        sharedPreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+
         mainActivity = this;
         homeFragment = new HomeFragment();
-        Random rnd = new Random();
-        if (notes == null) {
-            notes = Notes.getInstance();
-            for (int i = 0; i < 10; i++) {
-                notes.add("Заголовок " + i, "Текст заметки " + i, Calendar.getInstance(), images[rnd.nextInt(3)]);
-            }
-        }
+        notes = Notes.getInstance();
+
+        getLifecycle().addObserver(notes);
 
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(view -> {
@@ -59,8 +65,6 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Note
         });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_info)
                 .setOpenableLayout(drawer)
